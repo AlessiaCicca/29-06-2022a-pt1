@@ -8,7 +8,7 @@ class View(ft.UserControl):
         self._page = page
         self._page.title = "Template application using MVC and DAO"
         self._page.horizontal_alignment = 'CENTER'
-        self._page.theme_mode = ft.ThemeMode.DARK
+        self._page.theme_mode = ft.ThemeMode.LIGHT
         # controller (it is not initialized. Must be initialized in the main, after the controller is created)
         self._controller = None
         # graphical elements
@@ -20,20 +20,21 @@ class View(ft.UserControl):
 
     def load_interface(self):
         # title
-        self._title = ft.Text("Hello World", color="blue", size=24)
+        self._title = ft.Text("Esame 29/06/2022", color="blue", size=24)
         self._page.controls.append(self._title)
 
         #ROW with some controls
         # text field for the name
-        self.txt_name = ft.TextField(
-            label="name",
+        self.txt_canzoni = ft.TextField(
+            label="Numero Cnzoni",
             width=200,
-            hint_text="Insert a your name"
         )
+        self.dd_a1=ft.Dropdown(label="Album a1")
+        self.btn_grafo=ft.ElevatedButton(text="Crea Grafo", on_click=self._controller.handle_grafo)
 
         # button for the "hello" reply
-        self.btn_hello = ft.ElevatedButton(text="Hello", on_click=self._controller.handle_hello)
-        row1 = ft.Row([self.txt_name, self.btn_hello],
+        self.btn_adiacenze = ft.ElevatedButton(text="Stampa Adiacenze", on_click=self._controller.handle_adiacenze)
+        row1 = ft.Row([self.txt_canzoni,self.dd_a1, self.btn_grafo,self.btn_adiacenze],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
 
