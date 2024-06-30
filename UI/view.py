@@ -33,10 +33,18 @@ class View(ft.UserControl):
         self.btn_grafo=ft.ElevatedButton(text="Crea Grafo", on_click=self._controller.handle_grafo)
 
         # button for the "hello" reply
+        self.dd_a2=ft.Dropdown(label="Album a2")
+        self.txt_soglia=ft.TextField(label="Soglia x")
+        self.btn_calcola=ft.ElevatedButton(text="Calcola percorso", on_click=self._controller.handle_percorso)
+
         self.btn_adiacenze = ft.ElevatedButton(text="Stampa Adiacenze", on_click=self._controller.handle_adiacenze)
         row1 = ft.Row([self.txt_canzoni,self.dd_a1, self.btn_grafo,self.btn_adiacenze],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
+        row2 = ft.Row([self.txt_soglia, self.dd_a2, self.btn_calcola],
+                      alignment=ft.MainAxisAlignment.CENTER)
+        self._page.controls.append(row2)
+
 
         # List View where the reply is printed
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
